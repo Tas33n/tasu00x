@@ -513,7 +513,7 @@ try:
     if len(CHANNEL_USERNAME) == 0:
         CHANNEL_USERNAME = 'MirrorChan_x0'
 except KeyError:
-    logging.warning('CHANNEL_USERNAME not provided')
+    log_info.warning('CHANNEL_USERNAME not provided')
     CHANNEL_USERNAME = '@MirrorChan_x0'
 try:
     TOKEN_PICKLE_URL = getConfig('TOKEN_PICKLE_URL')
