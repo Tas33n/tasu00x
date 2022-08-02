@@ -208,7 +208,7 @@ def get_readable_message():
                 elif 'MB/s' in spd:
                     upspeed_bytes += float(spd.split('M')[0]) * 1048576
         bmsg += f"\n<b>│ DN:</b> {get_readable_file_size(dlspeed_bytes)}/s<b> | UP:</b> {get_readable_file_size(upspeed_bytes)}/s"
-        bmsg = f"\n<b>╰————————————————</b>"
+        bmsg += f"\n<b>╰————————————————</b>"
 
         buttons = ButtonMaker()
         buttons.sbutton("Statistics", str(THREE))
