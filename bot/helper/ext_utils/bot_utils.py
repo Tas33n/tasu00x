@@ -160,7 +160,7 @@ def get_readable_message():
                     msg += f"\n<b>Uploaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 else:
                     msg += f"\n<b>│⊙ Downloaded:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
-                msg += f"\n<b>│⊙ Speed:</b> {download.speed()}\n<b>Waiting Time:</b> {download.eta()}"
+                msg += f"\n<b>│⊙ Speed:</b> {download.speed()}\n<b>│⊙ Waiting Time:</b> {download.eta()}"
                 msg += f"\n<b>│⊙ Elapsed : </b>{get_readable_time(time() - download.message.date.timestamp())}"
                 msg += f'\n<b>│⊙ Req By :</b> <a href="https://t.me/c/{str(download.message.chat.id)[4:]}/{download.message.message_id}">{download.message.from_user.first_name}</a>'
                 msg += f"\n<b>│⊙ Engine :</b> {download.eng()}"
@@ -190,8 +190,8 @@ def get_readable_message():
                 msg += "\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"\n<b>_____________________________________</b>"
-        bmsg += f"\n<b>Disk:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
+        bmsg = f"\n<b>├──────────────</b>"
+        bmsg += f"\n<b>│ Disk:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
         bmsg += f"<b> | UPTM:</b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
         upspeed_bytes = 0
@@ -207,8 +207,9 @@ def get_readable_message():
                     upspeed_bytes += float(spd.split('K')[0]) * 1024
                 elif 'MB/s' in spd:
                     upspeed_bytes += float(spd.split('M')[0]) * 1048576
-        bmsg += f"\n<b>DN:</b> {get_readable_file_size(dlspeed_bytes)}/s<b> | UP:</b> {get_readable_file_size(upspeed_bytes)}/s"
-        
+        bmsg += f"\n<b>│ DN:</b> {get_readable_file_size(dlspeed_bytes)}/s<b> | UP:</b> {get_readable_file_size(upspeed_bytes)}/s"
+        bmsg = f"\n<b>╰————————————————</b>"
+
         buttons = ButtonMaker()
         buttons.sbutton("Statistics", str(THREE))
         sbutton = InlineKeyboardMarkup(buttons.build_menu(1))
